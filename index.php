@@ -52,26 +52,56 @@ $nuevos_productos = [
         'titulo' => 'Domótica',
         'desc'   => 'Automatización de sistemas de dispositivos electrónicos, especialmente para domicilios, locales y otros escenarios.',
         'icono'  => '🏡',
+        'caracteristicas' => [
+            'Control de luces, persianas y enchufes desde el celular',
+            'Integración con asistentes de voz (Google Home, Alexa)',
+            'Escenas y automatizaciones programables, como "modo noche"',
+            'Instalación sin obra mayor, compatible con instalaciones existentes',
+        ],
     ],
     [
         'titulo' => 'Instalación de Equipos',
         'desc'   => 'Instalamos equipos electrónicos y eléctricos, montaje de equipamiento tecnológico.',
         'icono'  => '⚙️',
+        'caracteristicas' => [
+            'Montaje de equipos eléctricos y electrónicos certificado',
+            'Conexión, configuración y pruebas de funcionamiento incluidas',
+            'Soporte técnico posterior a la instalación',
+            'Para hogares, oficinas y locales comerciales',
+        ],
     ],
     [
         'titulo' => 'Remodelación de Interiores',
         'desc'   => 'Instalación de láminas acrílicas, pintura y renovaciones menores, yeso, masilla, instalación de mobiliario.',
         'icono'  => '🪟',
+        'caracteristicas' => [
+            'Instalación de láminas acrílicas y revestimientos',
+            'Pintura interior y exterior con materiales de calidad',
+            'Reparaciones menores: yeso, masilla y terminaciones',
+            'Instalación de mobiliario y estructuras livianas',
+        ],
     ],
     [
         'titulo' => 'Pintura, Demarcaciones y Señaléticas',
         'desc'   => 'Rallados y demarcaciones con materiales acrílicos de alto tráfico, pintura para estructuras, muros y techos.',
         'icono'  => '🖌️',
+        'caracteristicas' => [
+            'Demarcación de estacionamientos y zonas de tránsito',
+            'Pintura para pisos de alto tráfico (bodegas, estacionamientos)',
+            'Señalética normativa y de seguridad',
+            'Materiales acrílicos resistentes a la intemperie',
+        ],
     ],
     [
         'titulo' => 'Metalúrgica',
         'desc'   => 'Soldadura profesional en bronce, plata, aluminio, acero inoxidable, eléctrica y distintos materiales de fundición.',
         'icono'  => '🔩',
+        'caracteristicas' => [
+            'Soldadura en bronce, plata, aluminio y acero inoxidable',
+            'Fabricación y reparación de estructuras metálicas',
+            'Trabajos a medida según especificación del cliente',
+            'Atención para proyectos industriales y residenciales',
+        ],
     ],
 ];
 
@@ -136,7 +166,7 @@ $zonas = [
     <meta name="description" content="JR Services SpA — Tu proveedor confiable de soluciones integrales en seguridad, climatización, domótica, redes y más.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -145,12 +175,7 @@ $zonas = [
 <header class="navbar" id="navbar">
     <div class="container navbar__inner">
         <a href="#inicio" class="navbar__logo">
-            <!-- Logo SVG inline (basado en la forma del PDF) -->
-            <svg class="logo-svg" viewBox="0 0 60 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="JR Services logo">
-                <polygon points="5,45 20,5 30,25 20,25" fill="#CC1414"/>
-                <polygon points="20,25 30,25 40,45 25,45" fill="#888"/>
-                <polygon points="30,25 45,5 55,25 40,25" fill="#CC1414"/>
-            </svg>
+            <img src="assets/jr-services-logo.png" alt="JR Services SpA logo" class="logo-img">
             <span class="navbar__brand">JR<strong>SERVICES</strong> <em>SpA</em></span>
         </a>
         <nav class="navbar__nav" id="main-nav">
@@ -175,6 +200,7 @@ $zonas = [
         <div class="shape shape--2"></div>
     </div>
     <div class="container hero__content">
+        <img src="assets/jr-services-logo.png" alt="JR Services SpA" class="hero__logo">
         <p class="hero__eyebrow">Tu proveedor confiable</p>
         <h1 class="hero__title">
             Soluciones<br>
@@ -249,10 +275,18 @@ $zonas = [
         <h2 class="section-title">Nuestros <span>Nuevos Productos</span></h2>
         <div class="nuevos-grid">
             <?php foreach ($nuevos_productos as $np): ?>
-            <div class="nuevo-card">
+            <div class="nuevo-card"
+                 tabindex="0"
+                 role="button"
+                 aria-haspopup="dialog"
+                 data-titulo="<?= htmlspecialchars($np['titulo']) ?>"
+                 data-icono="<?= htmlspecialchars($np['icono']) ?>"
+                 data-desc="<?= htmlspecialchars($np['desc']) ?>"
+                 data-caracteristicas='<?= htmlspecialchars(json_encode($np['caracteristicas']), ENT_QUOTES) ?>'>
                 <div class="nuevo-card__icono" aria-hidden="true"><?= $np['icono'] ?></div>
                 <h3><?= htmlspecialchars($np['titulo']) ?></h3>
                 <p><?= htmlspecialchars($np['desc']) ?></p>
+                <span class="nuevo-card__ver-mas">Ver más →</span>
             </div>
             <?php endforeach; ?>
         </div>
@@ -262,12 +296,15 @@ $zonas = [
 <!-- ===== SERVICIOS INTEGRALES ===== -->
 <section class="section integrales-section">
     <div class="container integrales-inner">
-        <div class="integrales-text">
-            <h2>Servicios <span>Integrales</span></h2>
-            <p>
-                Un producto creado pensando en nuestros clientes. Nos permite brindar soluciones en áreas distintas a nuestros productos principales. Hemos creado alianzas comerciales con emprendedores especialistas en distintas materias, lo que nos permite ofrecer una solución rápida y confiable con precio justo y competitivo — bajo nuestra supervisión, garantizando la calidad. <strong>Todo en un mismo proveedor.</strong>
-            </p>
+        <div class="integrales-brand">
+            <div class="integrales-brand__badge">
+                <img src="assets/jr-services-logo.png" alt="JR Services SpA" class="integrales-brand__icon">
+            </div>
+            <h2 class="integrales-brand__title">Servicios <span>Integrales</span></h2>
         </div>
+        <p class="integrales-text__desc">
+            Un producto creado pensando en nuestros clientes. Nos permite brindar soluciones en áreas distintas a nuestros productos principales. Hemos creado alianzas comerciales con emprendedores especialistas en distintas materias, lo que nos permite ofrecer una solución rápida y confiable con precio justo y competitivo — bajo nuestra supervisión, garantizando la calidad. <strong>Todo en un mismo proveedor.</strong>
+        </p>
         <div class="integrales-visual" aria-hidden="true">
             <div class="integrales-badge">1 proveedor</div>
             <div class="integrales-badge integrales-badge--2">Múltiples soluciones</div>
@@ -356,7 +393,7 @@ $zonas = [
                 </li>
             </ul>
         </div>
-        <form class="contacto-form" id="contacto-form" novalidate>
+        <form class="contacto-form" id="contacto-form" novalidate data-whatsapp="<?= preg_replace('/\D+/', '', $empresa['telefono1']) ?>">
             <h3>Envíanos un mensaje</h3>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
@@ -379,7 +416,7 @@ $zonas = [
                 <label for="mensaje">Mensaje</label>
                 <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
             </div>
-            <button type="submit" class="btn btn--red btn--full">Enviar mensaje</button>
+            <button type="submit" class="btn btn--red btn--full">Enviar por WhatsApp</button>
             <p class="form-notice" id="form-notice" aria-live="polite"></p>
         </form>
     </div>
@@ -389,11 +426,7 @@ $zonas = [
 <footer class="footer">
     <div class="container footer__inner">
         <div class="footer__brand">
-            <svg class="logo-svg logo-svg--sm" viewBox="0 0 60 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <polygon points="5,45 20,5 30,25 20,25" fill="#CC1414"/>
-                <polygon points="20,25 30,25 40,45 25,45" fill="#888"/>
-                <polygon points="30,25 45,5 55,25 40,25" fill="#CC1414"/>
-            </svg>
+            <img src="assets/jr-services-logo.png" alt="JR Services SpA logo" class="logo-img logo-img--sm">
             <span>JR<strong>SERVICES</strong> SpA</span>
         </div>
         <p class="footer__copy">&copy; <?= date('Y') ?> <?= htmlspecialchars($empresa['nombre']) ?>. Todos los derechos reservados.</p>
@@ -410,6 +443,18 @@ $zonas = [
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
 </a>
+
+<!-- ===== MODAL: NUEVOS PRODUCTOS ===== -->
+<div class="modal-overlay" id="nuevo-modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="nuevo-modal-title">
+        <button type="button" class="modal-close" id="nuevo-modal-close" aria-label="Cerrar">&times;</button>
+        <div class="modal-icono" id="nuevo-modal-icono" aria-hidden="true"></div>
+        <h3 class="modal-title" id="nuevo-modal-title"></h3>
+        <p class="modal-desc" id="nuevo-modal-desc"></p>
+        <ul class="modal-features" id="nuevo-modal-features"></ul>
+        <a href="#contacto" class="btn btn--red btn--full modal-cta" id="nuevo-modal-cta">Solicitar este servicio</a>
+    </div>
+</div>
 
 <script src="main.js"></script>
 </body>

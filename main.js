@@ -62,7 +62,7 @@
     const revealTargets = document.querySelectorAll(
         '.vm-card, .producto-card, .seguridad-item, .nuevo-card, ' +
         '.alianza-card, .marca-card, .zona-card, .section-title, ' +
-        '.cobertura-intro, .integrales-text, .integrales-visual'
+        '.cobertura-intro, .integrales-brand, .integrales-text__desc, .integrales-visual'
     );
 
     revealTargets.forEach(el => el.setAttribute('data-reveal', ''));
@@ -81,19 +81,90 @@
     revealTargets.forEach(el => observer.observe(el));
 
 
-    /* ── Formulario de contacto ── */
+    /* ── Modales: Nuestros Nuevos Productos ── */
+    const nuevoCards = document.querySelectorAll('.nuevo-card');
+    const nuevoModal  = document.getElementById('nuevo-modal');
+
+    if (nuevoCards.length && nuevoModal) {
+        const modalIcono    = document.getElementById('nuevo-modal-icono');
+        const modalTitle    = document.getElementById('nuevo-modal-title');
+        const modalDesc     = document.getElementById('nuevo-modal-desc');
+        const modalFeatures = document.getElementById('nuevo-modal-features');
+        const modalClose    = document.getElementById('nuevo-modal-close');
+        const modalCta      = document.getElementById('nuevo-modal-cta');
+        let lastFocused = null;
+
+        const abrirModal = (card) => {
+            const { titulo, icono, desc, caracteristicas } = card.dataset;
+
+            modalIcono.textContent = icono || '';
+            modalTitle.textContent = titulo || '';
+            modalDesc.textContent  = desc || '';
+
+            modalFeatures.innerHTML = '';
+            try {
+                const features = JSON.parse(caracteristicas || '[]');
+                features.forEach(f => {
+                    const li = document.createElement('li');
+                    li.textContent = f;
+                    modalFeatures.appendChild(li);
+                });
+            } catch (err) {
+                // Si no hay características válidas, simplemente no se muestra la lista
+            }
+
+            lastFocused = document.activeElement;
+            nuevoModal.classList.add('open');
+            nuevoModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+            modalClose.focus();
+        };
+
+        const cerrarModal = () => {
+            nuevoModal.classList.remove('open');
+            nuevoModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            if (lastFocused) lastFocused.focus();
+        };
+
+        nuevoCards.forEach(card => {
+            card.addEventListener('click', () => abrirModal(card));
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    abrirModal(card);
+                }
+            });
+        });
+
+        modalClose.addEventListener('click', cerrarModal);
+        modalCta.addEventListener('click', cerrarModal);
+        nuevoModal.addEventListener('click', (e) => {
+            if (e.target === nuevoModal) cerrarModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nuevoModal.classList.contains('open')) cerrarModal();
+        });
+    }
+
+
+    /* ── Formulario de contacto → WhatsApp (click-to-chat) ── */
     const form    = document.getElementById('contacto-form');
     const notice  = document.getElementById('form-notice');
 
     if (form) {
+        // Número de destino, sin '+', espacios ni guiones (formato requerido por wa.me)
+        const whatsappNumero = form.dataset.whatsapp;
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             notice.className = 'form-notice';
             notice.textContent = '';
 
-            const nombre  = form.nombre.value.trim();
-            const email   = form.email.value.trim();
-            const mensaje = form.mensaje.value.trim();
+            const nombre   = form.nombre.value.trim();
+            const email    = form.email.value.trim();
+            const servicio = form.servicio.value.trim();
+            const mensaje  = form.mensaje.value.trim();
 
             if (!nombre || !email || !mensaje) {
                 notice.classList.add('error');
@@ -105,19 +176,26 @@
                 notice.textContent = 'Por favor ingresa un email válido.';
                 return;
             }
+            if (!whatsappNumero) {
+                notice.classList.add('error');
+                notice.textContent = 'No se encontró un número de WhatsApp configurado.';
+                return;
+            }
 
-            // Simulación de envío (aquí iría el fetch a send_mail.php)
-            const btn = form.querySelector('button[type="submit"]');
-            btn.disabled = true;
-            btn.textContent = 'Enviando…';
+            // Armar el mensaje prellenado
+            let texto = `Hola, mi nombre es ${nombre}.`;
+            if (servicio) texto += `\nServicio de interés: ${servicio}.`;
+            texto += `\n\n${mensaje}`;
+            texto += `\n\n(Email de contacto: ${email})`;
 
-            setTimeout(() => {
-                notice.classList.add('success');
-                notice.textContent = '✓ ¡Mensaje enviado! Te contactaremos pronto.';
-                form.reset();
-                btn.disabled = false;
-                btn.textContent = 'Enviar mensaje';
-            }, 1200);
+            const url = `https://wa.me/${whatsappNumero}?text=${encodeURIComponent(texto)}`;
+
+            notice.classList.add('success');
+            notice.textContent = '✓ Abriendo WhatsApp con tu mensaje listo para enviar…';
+
+            window.open(url, '_blank', 'noopener');
+
+            form.reset();
         });
     }
 
