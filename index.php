@@ -175,8 +175,7 @@ $zonas = [
 <header class="navbar" id="navbar">
     <div class="container navbar__inner">
         <a href="#inicio" class="navbar__logo">
-            <img src="assets/jr-services-logo.png" alt="JR Services SpA logo" class="logo-img">
-            <span class="navbar__brand">JR<strong>SERVICES</strong> <em>SpA</em></span>
+            <img src="assets/jr-services-logo-nav.png" alt="JR Services SpA" class="logo-img logo-img--nav">
         </a>
         <nav class="navbar__nav" id="main-nav">
             <a href="#nosotros">Nosotros</a>
@@ -185,7 +184,7 @@ $zonas = [
             <a href="#alianzas">Alianzas</a>
             <a href="#marcas">Marcas</a>
             <a href="#cobertura">Cobertura</a>
-            <a href="#contacto" class="btn btn--nav">Contacto</a>
+           <!-- <a href="#contacto" class="btn btn--nav">Contacto</a>-->
         </nav>
         <button class="hamburger" id="hamburger" aria-label="Menú">
             <span></span><span></span><span></span>
@@ -239,7 +238,7 @@ $zonas = [
 <!-- ===== PRODUCTOS PRINCIPALES ===== -->
 <section class="section productos-section" id="productos">
     <div class="container">
-        <h2 class="section-title">Productos <span>Principales</span></h2>
+        <h2 class="section-title">Servicios <span>Principales</span></h2>
         <div class="productos-grid">
             <?php foreach ($productos_principales as $p): ?>
             <div class="producto-card">
@@ -272,7 +271,7 @@ $zonas = [
 <!-- ===== NUEVOS PRODUCTOS ===== -->
 <section class="section nuevos-section" id="nuevos">
     <div class="container">
-        <h2 class="section-title">Nuestros <span>Nuevos Productos</span></h2>
+        <h2 class="section-title">Nuestros <span>Nuevos Servicios</span></h2>
         <div class="nuevos-grid">
             <?php foreach ($nuevos_productos as $np): ?>
             <div class="nuevo-card"
