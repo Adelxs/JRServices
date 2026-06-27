@@ -42,7 +42,7 @@ $seguridad = [
         'desc'   => 'Puertas automáticas, retenedores, brazos hidráulicos, sensor biométrico, automatización de accesos.',
     ],
     [
-        'titulo' => 'Cerraduras Eléctricas',
+        'titulo' => 'Puertas Automáticas',
         'desc'   => 'Botón de apertura y cierre, video porteros, intercomunicador wifi.',
     ],
 ];
@@ -384,7 +384,7 @@ $zonas = [
                 </li>
                 <li>
                     <span class="contacto-list__icon" aria-hidden="true">📘</span>
-                    <span><?= htmlspecialchars($empresa['facebook']) ?></span>
+                    <span><a href="https://www.facebook.com/profile.php?id=61557084193563#"><?= htmlspecialchars($empresa['facebook']) ?></a></span>
                 </li>
                 <li>
                     <span class="contacto-list__icon" aria-hidden="true">📍</span>
