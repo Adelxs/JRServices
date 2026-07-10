@@ -1,5 +1,4 @@
 <?php
-// Datos de la empresa — editar aquí para actualizar toda la página
 $empresa = [
     'nombre'    => 'JR Services SpA',
     'slogan'    => 'Soluciones Integrales',
@@ -16,12 +15,36 @@ $vision = 'Convertirnos en una empresa de referencia en el área de servicios in
 $mision = 'Brindar un excelente servicio en diversas áreas y satisfacer las necesidades principales de nuestros clientes aportando soluciones profesionales de alta calidad, cumpliendo con los tiempos de entrega establecidos, promoviendo una buena relación cliente-proveedor con miras a lograr una fidelización comercial.';
 
 $productos_principales = [
-    ['icono' => '🔒', 'nombre' => 'Seguridad Perimetral'],
-    ['icono' => '🛠️', 'nombre' => 'Servicios Integrales'],
-    ['icono' => '❄️', 'nombre' => 'Climatización'],
-    ['icono' => '🏠', 'nombre' => 'Domótica'],
-    ['icono' => '💻', 'nombre' => 'Computación'],
-    ['icono' => '🌐', 'nombre' => 'Redes LAN'],
+    [
+        'icono' => '🔒',
+        'nombre' => 'Seguridad Perimetral',
+        'desc' => 'Protegemos tu hogar, local o empresa con cámaras, alarmas y cercos eléctricos instalados por nuestros especialistas.',
+    ],
+    [
+        'icono' => '🛠️',
+        'nombre' => 'Servicios Integrales',
+        'desc' => 'Un solo proveedor para todas tus necesidades. Coordinamos todo para que tú no tengas que preocuparte de nada.',
+    ],
+    [
+        'icono' => '❄️',
+        'nombre' => 'Climatización',
+        'desc' => 'Instalamos tu aire acondicionado de forma profesional, con la marca y el equipo que mejor se adapta a tu espacio.',
+    ],
+    [
+        'icono' => '🏠',
+        'nombre' => 'Domótica',
+        'desc' => 'Convierte tu hogar o local en un espacio inteligente: controla luces, accesos y más desde tu celular.',
+    ],
+    [
+        'icono' => '💻',
+        'nombre' => 'Computación',
+        'desc' => 'Reparamos, configuramos y optimizamos tus equipos. También asesoramos en compras para que elijas bien.',
+    ],
+    [
+        'icono' => '🌐',
+        'nombre' => 'Redes LAN',
+        'desc' => 'Diseñamos e instalamos tu red cableada o inalámbrica para que tengas conectividad estable en todo tu espacio.',
+    ],
 ];
 
 $seguridad = [
@@ -184,7 +207,6 @@ $zonas = [
             <a href="#alianzas">Alianzas</a>
             <a href="#marcas">Marcas</a>
             <a href="#cobertura">Cobertura</a>
-           <!-- <a href="#contacto" class="btn btn--nav">Contacto</a>-->
         </nav>
         <button class="hamburger" id="hamburger" aria-label="Menú">
             <span></span><span></span><span></span>
@@ -241,9 +263,18 @@ $zonas = [
         <h2 class="section-title">Servicios <span>Principales</span></h2>
         <div class="productos-grid">
             <?php foreach ($productos_principales as $p): ?>
-            <div class="producto-card">
+            <div class="producto-card"
+                 tabindex="0"
+                 role="button"
+                 aria-haspopup="dialog"
+                 data-titulo="<?= htmlspecialchars($p['nombre']) ?>"
+                 data-icono="<?= htmlspecialchars($p['icono']) ?>"
+                 data-desc="<?= htmlspecialchars($p['desc']) ?>">
                 <span class="producto-card__icon" aria-hidden="true"><?= $p['icono'] ?></span>
-                <span class="producto-card__nombre"><?= htmlspecialchars($p['nombre']) ?></span>
+                <div class="producto-card__body">
+                    <span class="producto-card__nombre"><?= htmlspecialchars($p['nombre']) ?></span>
+                    <span class="producto-card__ver-mas">Ver más →</span>
+                </div>
             </div>
             <?php endforeach; ?>
         </div>
@@ -333,10 +364,23 @@ $zonas = [
     <div class="container">
         <h2 class="section-title">Marcas en las que <span>Somos Especialistas</span></h2>
         <div class="marcas-grid">
-            <?php foreach ($marcas as $m): ?>
+            <?php
+            $logos_marcas = [
+                'Hikvision'        => 'assets/hikvisions.png',
+                'Dahua Technology' => 'assets/alhua.png',
+                'Midea'            => 'assets/midea.png',
+                'Clark Air Conditioning' => 'assets/clark.png',
+            ];
+            foreach ($marcas as $m):
+                $logo_src = $logos_marcas[$m['nombre']] ?? null;
+            ?>
             <div class="marca-card">
                 <p class="marca-card__categoria"><?= htmlspecialchars($m['categoria']) ?></p>
+                <?php if ($logo_src): ?>
+                <img src="<?= htmlspecialchars($logo_src) ?>" alt="Logo <?= htmlspecialchars($m['nombre']) ?>" class="marca-card__logo">
+                <?php else: ?>
                 <h3 class="marca-card__nombre"><?= htmlspecialchars($m['nombre']) ?></h3>
+                <?php endif; ?>
                 <p class="marca-card__desc"><?= htmlspecialchars($m['desc']) ?></p>
             </div>
             <?php endforeach; ?>
@@ -372,31 +416,51 @@ $zonas = [
             <p>Atendemos las 24 horas del día a través de nuestras redes sociales, correo electrónico o WhatsApp.</p>
             <ul class="contacto-list">
                 <li>
-                    <span class="contacto-list__icon" aria-hidden="true">📞</span>
+                    <span class="contacto-list__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.01l-2.2 2.21z" fill="#CC1414"/></svg>
+                    </span>
                     <div>
                         <a href="tel:<?= preg_replace('/\s+/', '', $empresa['telefono1']) ?>"><?= htmlspecialchars($empresa['telefono1']) ?></a>
-                        <a href="tel:<?= preg_replace('/\s+/', '', $empresa['telefono2']) ?>"><?= htmlspecialchars($empresa['telefono2']) ?></a>
+                       
                     </div>
                 </li>
                 <li>
-                    <span class="contacto-list__icon" aria-hidden="true">✉️</span>
+                    <span class="contacto-list__icon" aria-hidden="true">
+                        <img src="assets/icon-gmail.svg" alt="Gmail">
+                    </span>
                     <a href="mailto:<?= htmlspecialchars($empresa['email']) ?>"><?= htmlspecialchars($empresa['email']) ?></a>
                 </li>
                 <li>
-                    <span class="contacto-list__icon" aria-hidden="true">📘</span>
+                    <span class="contacto-list__icon" aria-hidden="true">
+                        <img src="assets/icon-facebook.svg" alt="Facebook">
+                    </span>
                     <span><a href="https://www.facebook.com/profile.php?id=61557084193563#"><?= htmlspecialchars($empresa['facebook']) ?></a></span>
                 </li>
                 <li>
-                    <span class="contacto-list__icon" aria-hidden="true">📍</span>
+                    <span class="contacto-list__icon" aria-hidden="true">
+                        <img src="assets/icon-instagram.svg" alt="Instagram">
+                    </span>
+                    <span>jrservices.spa</span>
+                </li>
+                <li>
+                    <span class="contacto-list__icon" aria-hidden="true">
+                        <img src="assets/icon-googlemaps.svg" alt="Google Maps">
+                    </span>
                     <span><?= htmlspecialchars($empresa['direccion']) ?></span>
                 </li>
             </ul>
         </div>
         <form class="contacto-form" id="contacto-form" novalidate data-whatsapp="<?= preg_replace('/\D+/', '', $empresa['telefono1']) ?>">
             <h3>Envíanos un mensaje</h3>
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="comuna">Comuna</label>
+                    <input type="text" id="comuna" name="comuna" placeholder="Tu comuna">
+                </div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
@@ -442,6 +506,17 @@ $zonas = [
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
 </a>
+
+<!-- ===== MODAL: SERVICIOS PRINCIPALES ===== -->
+<div class="modal-overlay" id="producto-modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="producto-modal-title">
+        <button type="button" class="modal-close" id="producto-modal-close" aria-label="Cerrar">&times;</button>
+        <div class="modal-icono" id="producto-modal-icono" aria-hidden="true"></div>
+        <h3 class="modal-title" id="producto-modal-title"></h3>
+        <p class="modal-desc" id="producto-modal-desc"></p>
+        <a href="#contacto" class="btn btn--red btn--full modal-cta" id="producto-modal-cta">Cotizar este servicio</a>
+    </div>
+</div>
 
 <!-- ===== MODAL: NUEVOS PRODUCTOS ===== -->
 <div class="modal-overlay" id="nuevo-modal" aria-hidden="true">

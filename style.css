@@ -114,7 +114,7 @@ ul { list-style: none; }
 .navbar__nav {
     display: flex;
     align-items: center;
-    gap: 58px;
+    gap: 28px;
 }
 .navbar__nav a {
     font-family: var(--font-display);
@@ -280,21 +280,34 @@ ul { list-style: none; }
     align-items: center;
     gap: 16px;
     transition: border-color var(--transition), background var(--transition), transform var(--transition);
-    cursor: default;
+    cursor: pointer;
 }
 .producto-card:hover {
     border-color: var(--color-rojo);
     background: #2a1010;
     transform: translateY(-2px);
 }
+.producto-card:focus-visible {
+    outline: 3px solid var(--color-rojo);
+    outline-offset: 3px;
+}
 .producto-card__icon { font-size: 2rem; flex-shrink: 0; }
+.producto-card__body { display: flex; flex-direction: column; gap: 4px; }
 .producto-card__nombre {
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: .04em;
     text-transform: uppercase;
     color: var(--color-blanco);
+}
+.producto-card__ver-mas {
+    font-family: var(--font-display);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--color-rojo);
 }
 
 /* ── SEGURIDAD DIGITAL ── */
@@ -603,6 +616,14 @@ body.modal-open { overflow: hidden; }
     color: var(--color-rojo);
     margin-bottom: 8px;
 }
+.marca-card__logo {
+    height: 56px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 12px;
+    display: block;
+}
 .marca-card__nombre {
     font-family: var(--font-display);
     font-size: 1.5rem;
@@ -691,9 +712,19 @@ body.modal-open { overflow: hidden; }
     color: #ccc;
 }
 .contacto-list__icon {
-    font-size: 1.4rem;
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
-    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+}
+.contacto-list__icon img,
+.contacto-list__icon svg {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
 }
 .contacto-list a {
     display: block;
@@ -716,6 +747,11 @@ body.modal-open { overflow: hidden; }
     text-transform: uppercase;
     margin-bottom: 28px;
     letter-spacing: .03em;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
 }
 .form-group { margin-bottom: 20px; }
 .form-group label {
@@ -850,7 +886,8 @@ body.modal-open { overflow: hidden; }
     .vm-grid,
     .seguridad-list,
     .marcas-grid,
-    .contacto-inner { grid-template-columns: 1fr; }
+    .contacto-inner,
+    .form-row { grid-template-columns: 1fr; }
 
     .productos-grid,
     .nuevos-grid,

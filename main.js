@@ -81,6 +81,52 @@
     revealTargets.forEach(el => observer.observe(el));
 
 
+    /* ── Modales: Servicios Principales ── */
+    const productoCards = document.querySelectorAll('.producto-card');
+    const productoModal = document.getElementById('producto-modal');
+
+    if (productoCards.length && productoModal) {
+        const pModalIcono = document.getElementById('producto-modal-icono');
+        const pModalTitle = document.getElementById('producto-modal-title');
+        const pModalDesc  = document.getElementById('producto-modal-desc');
+        const pModalClose = document.getElementById('producto-modal-close');
+        const pModalCta   = document.getElementById('producto-modal-cta');
+        let pLastFocused  = null;
+
+        const abrirProductoModal = (card) => {
+            pModalIcono.textContent = card.dataset.icono || '';
+            pModalTitle.textContent = card.dataset.titulo || '';
+            pModalDesc.textContent  = card.dataset.desc || '';
+            pLastFocused = document.activeElement;
+            productoModal.classList.add('open');
+            productoModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+            pModalClose.focus();
+        };
+
+        const cerrarProductoModal = () => {
+            productoModal.classList.remove('open');
+            productoModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            if (pLastFocused) pLastFocused.focus();
+        };
+
+        productoCards.forEach(card => {
+            card.addEventListener('click', () => abrirProductoModal(card));
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirProductoModal(card); }
+            });
+        });
+
+        pModalClose.addEventListener('click', cerrarProductoModal);
+        pModalCta.addEventListener('click', cerrarProductoModal);
+        productoModal.addEventListener('click', (e) => { if (e.target === productoModal) cerrarProductoModal(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && productoModal.classList.contains('open')) cerrarProductoModal();
+        });
+    }
+
+
     /* ── Modales: Nuestros Nuevos Productos ── */
     const nuevoCards = document.querySelectorAll('.nuevo-card');
     const nuevoModal  = document.getElementById('nuevo-modal');
@@ -162,6 +208,7 @@
             notice.textContent = '';
 
             const nombre   = form.nombre.value.trim();
+            const comuna   = form.comuna ? form.comuna.value.trim() : '';
             const email    = form.email.value.trim();
             const servicio = form.servicio.value.trim();
             const mensaje  = form.mensaje.value.trim();
@@ -184,6 +231,7 @@
 
             // Armar el mensaje prellenado
             let texto = `Hola, mi nombre es ${nombre}.`;
+            if (comuna) texto += ` Soy de la comuna de ${comuna}.`;
             if (servicio) texto += `\nServicio de interés: ${servicio}.`;
             texto += `\n\n${mensaje}`;
             texto += `\n\n(Email de contacto: ${email})`;
