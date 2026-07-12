@@ -353,17 +353,23 @@ ul { list-style: none; }
 .seguridad-item__body p { color: var(--color-gris-med); font-size: .92rem; }
 
 /* ── NUEVOS PRODUCTOS ── */
-.nuevos-section { background: var(--color-gris-bg); }
+.nuevos-section { background: var(--color-negro); }
+.nuevos-section .section-title { color: var(--color-blanco); }
 .nuevos-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 }
 .nuevo-card {
-    background: var(--color-blanco);
+    position: relative;
     border-radius: var(--radius);
-    padding: 32px 28px;
-    box-shadow: var(--shadow);
+    overflow: hidden;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--color-gris-osc);
     border-bottom: 3px solid transparent;
     transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
     cursor: pointer;
@@ -371,32 +377,70 @@ ul { list-style: none; }
 .nuevo-card:hover {
     border-bottom-color: var(--color-rojo);
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.5);
 }
 .nuevo-card:focus-visible {
     outline: 3px solid var(--color-rojo);
     outline-offset: 3px;
 }
-.nuevo-card__icono { font-size: 2.2rem; margin-bottom: 16px; }
+.nuevo-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.45) 0%,
+        rgba(0,0,0,0.70) 60%,
+        rgba(17,0,0,0.88) 100%
+    );
+    transition: background var(--transition);
+}
+.nuevo-card:hover .nuevo-card__overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.55) 0%,
+        rgba(140,0,0,0.72) 60%,
+        rgba(80,0,0,0.92) 100%
+    );
+}
+.nuevo-card__content {
+    position: relative;
+    z-index: 1;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.nuevo-card__icono { font-size: 2.2rem; margin-bottom: 14px; }
 .nuevo-card h3 {
     font-family: var(--font-display);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .04em;
-    color: var(--color-negro);
+    color: var(--color-blanco) !important;
     margin-bottom: 10px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
-.nuevo-card p { color: var(--color-gris-med); font-size: .92rem; }
+.nuevo-card p {
+    color: rgba(255,255,255,0.88) !important;
+    font-size: .88rem;
+    line-height: 1.55;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    flex: 1;
+}
 .nuevo-card__ver-mas {
     display: inline-block;
-    margin-top: 16px;
+    margin-top: 18px;
     font-family: var(--font-display);
     font-size: .82rem;
     font-weight: 700;
-    letter-spacing: .06em;
+    letter-spacing: .08em;
     text-transform: uppercase;
-    color: var(--color-rojo);
+    color: var(--color-blanco);
+    background: var(--color-rojo);
+    padding: 6px 14px;
+    border-radius: 4px;
+    align-self: flex-start;
 }
 
 /* ── MODAL (Nuevos Productos) ── */
@@ -892,6 +936,7 @@ body.modal-open { overflow: hidden; }
     .productos-grid,
     .nuevos-grid,
     .zonas-grid { grid-template-columns: 1fr 1fr; }
+    .nuevo-card { min-height: 220px; }
 
     .alianzas-grid { grid-template-columns: 1fr; }
 
@@ -910,4 +955,19 @@ body.modal-open { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ── OVERRIDE: textos blancos en nuevo-card con imagen de fondo ── */
+.nuevos-section .nuevo-card h3,
+.nuevo-card .nuevo-card__content h3 {
+    color: #ffffff !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8) !important;
+}
+.nuevos-section .nuevo-card p,
+.nuevo-card .nuevo-card__content p {
+    color: rgba(255,255,255,0.92) !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7) !important;
+}
+.nuevos-section .nuevo-card .nuevo-card__icono {
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7));
 }

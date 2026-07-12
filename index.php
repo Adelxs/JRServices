@@ -75,6 +75,7 @@ $nuevos_productos = [
         'titulo' => 'Domótica',
         'desc'   => 'Automatización de sistemas de dispositivos electrónicos, especialmente para domicilios, locales y otros escenarios.',
         'icono'  => '🏡',
+        'imagen' => 'assets/nuevo-bg-domotica.jpg',
         'caracteristicas' => [
             'Control de luces, persianas y enchufes desde el celular',
             'Integración con asistentes de voz (Google Home, Alexa)',
@@ -86,6 +87,7 @@ $nuevos_productos = [
         'titulo' => 'Instalación de Equipos',
         'desc'   => 'Instalamos equipos electrónicos y eléctricos, montaje de equipamiento tecnológico.',
         'icono'  => '⚙️',
+        'imagen' => 'assets/nuevo-bg-instalacion.jpg',
         'caracteristicas' => [
             'Montaje de equipos eléctricos y electrónicos certificado',
             'Conexión, configuración y pruebas de funcionamiento incluidas',
@@ -97,6 +99,7 @@ $nuevos_productos = [
         'titulo' => 'Remodelación de Interiores',
         'desc'   => 'Instalación de láminas acrílicas, pintura y renovaciones menores, yeso, masilla, instalación de mobiliario.',
         'icono'  => '🪟',
+        'imagen' => 'assets/nuevo-bg-remodelacion.jpg',
         'caracteristicas' => [
             'Instalación de láminas acrílicas y revestimientos',
             'Pintura interior y exterior con materiales de calidad',
@@ -108,6 +111,7 @@ $nuevos_productos = [
         'titulo' => 'Pintura, Demarcaciones y Señaléticas',
         'desc'   => 'Rallados y demarcaciones con materiales acrílicos de alto tráfico, pintura para estructuras, muros y techos.',
         'icono'  => '🖌️',
+        'imagen' => 'assets/nuevo-bg-pintura.jpg',
         'caracteristicas' => [
             'Demarcación de estacionamientos y zonas de tránsito',
             'Pintura para pisos de alto tráfico (bodegas, estacionamientos)',
@@ -119,6 +123,7 @@ $nuevos_productos = [
         'titulo' => 'Metalúrgica',
         'desc'   => 'Soldadura profesional en bronce, plata, aluminio, acero inoxidable, eléctrica y distintos materiales de fundición.',
         'icono'  => '🔩',
+        'imagen' => 'assets/nuevo-bg-metalurgia.jpg',
         'caracteristicas' => [
             'Soldadura en bronce, plata, aluminio y acero inoxidable',
             'Fabricación y reparación de estructuras metálicas',
@@ -309,14 +314,18 @@ $zonas = [
                  tabindex="0"
                  role="button"
                  aria-haspopup="dialog"
+                 style="background-image: url('<?= htmlspecialchars($np['imagen']) ?>')"
                  data-titulo="<?= htmlspecialchars($np['titulo']) ?>"
                  data-icono="<?= htmlspecialchars($np['icono']) ?>"
                  data-desc="<?= htmlspecialchars($np['desc']) ?>"
                  data-caracteristicas='<?= htmlspecialchars(json_encode($np['caracteristicas']), ENT_QUOTES) ?>'>
-                <div class="nuevo-card__icono" aria-hidden="true"><?= $np['icono'] ?></div>
-                <h3><?= htmlspecialchars($np['titulo']) ?></h3>
-                <p><?= htmlspecialchars($np['desc']) ?></p>
-                <span class="nuevo-card__ver-mas">Ver más →</span>
+                <div class="nuevo-card__overlay" aria-hidden="true"></div>
+                <div class="nuevo-card__content">
+                    <div class="nuevo-card__icono" aria-hidden="true"><?= $np['icono'] ?></div>
+                    <h3><?= htmlspecialchars($np['titulo']) ?></h3>
+                    <p><?= htmlspecialchars($np['desc']) ?></p>
+                    <span class="nuevo-card__ver-mas">Ver más →</span>
+                </div>
             </div>
             <?php endforeach; ?>
         </div>
@@ -421,7 +430,7 @@ $zonas = [
                     </span>
                     <div>
                         <a href="tel:<?= preg_replace('/\s+/', '', $empresa['telefono1']) ?>"><?= htmlspecialchars($empresa['telefono1']) ?></a>
-                       
+                        
                     </div>
                 </li>
                 <li>
@@ -440,7 +449,7 @@ $zonas = [
                     <span class="contacto-list__icon" aria-hidden="true">
                         <img src="assets/icon-instagram.svg" alt="Instagram">
                     </span>
-                    <span>jrservices.spa</span>
+                    <span><a href="https://www.instagram.com/jrservices.ven/">Jrservices.ven</a></span>
                 </li>
                 <li>
                     <span class="contacto-list__icon" aria-hidden="true">
