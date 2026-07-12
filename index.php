@@ -321,10 +321,10 @@ $zonas = [
                  data-caracteristicas='<?= htmlspecialchars(json_encode($np['caracteristicas']), ENT_QUOTES) ?>'>
                 <div class="nuevo-card__overlay" aria-hidden="true"></div>
                 <div class="nuevo-card__content">
-                    <div class="nuevo-card__icono" aria-hidden="true"><?= $np['icono'] ?></div>
-                    <h3><?= htmlspecialchars($np['titulo']) ?></h3>
-                    <p><?= htmlspecialchars($np['desc']) ?></p>
-                    <span class="nuevo-card__ver-mas">Ver más →</span>
+                    <div class="nuevo-card__icono" aria-hidden="true" style="filter:drop-shadow(0 1px 3px rgba(0,0,0,0.8))"><?= $np['icono'] ?></div>
+                    <h3 style="color:#ffffff;text-shadow:0 2px 6px rgba(0,0,0,0.9)"><?= htmlspecialchars($np['titulo']) ?></h3>
+                    <p style="color:rgba(255,255,255,0.92);text-shadow:0 1px 4px rgba(0,0,0,0.8)"><?= htmlspecialchars($np['desc']) ?></p>
+                    <span class="nuevo-card__ver-mas" style="color:#ffffff;background:#CC1414">Ver más →</span>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -375,10 +375,10 @@ $zonas = [
         <div class="marcas-grid">
             <?php
             $logos_marcas = [
-                'Hikvision'        => 'assets/hikvisions.png',
-                'Dahua Technology' => 'assets/alhua.png',
-                'Midea'            => 'assets/midea.png',
-                'Clark Air Conditioning' => 'assets/clark.png',
+                'Hikvision'        => 'assets/logo-marca-hikvision.png',
+                'Dahua Technology' => 'assets/logo-marca-dahua.png',
+                'Midea'            => 'assets/logo-marca-midea.png',
+                'Clark Air Conditioning' => 'assets/logo-marca-clark.png',
             ];
             foreach ($marcas as $m):
                 $logo_src = $logos_marcas[$m['nombre']] ?? null;
