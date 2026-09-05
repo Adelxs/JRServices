@@ -93,7 +93,7 @@ ul { list-style: none; }
     transition: box-shadow var(--transition);
 }
 @media (max-width: 768px) {
-    .navbar { border-bottom: none; }
+    .navbar { border-bottom: none; border-bottom: 2px solid var(--color-rojo);}
 }
 .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
 .navbar__inner {

@@ -135,7 +135,7 @@ $nuevos_productos = [
         'titulo' => 'Servicios Integrales',
         'desc'   => 'Soluciones completas para tu hogar o negocio: electricidad, fontanería, instalaciones y soldadura en un solo servicio.',
         'icono'  => '🛠️',
-        'imagen' => 'assets/nuevo-bg-instalacion.jpg',
+        'imagen' => 'assets/ELECTRICIDAD.jpg',
         'caracteristicas' => [
             '⚡ Electricidad menor: enchufes, focos y lámparas, cambios automáticos, instalación de puntos y canalizaciones, dispositivos LED',
             '🚿 Fontanería básica: cambio de grifería, extensión de cañerías, instalación de grifos, instalación de calentadores y mantenimiento',
@@ -207,7 +207,11 @@ $zonas = [
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+    <link rel="stylesheet" href="style.css?v=<?= date('YmdHi') ?>">
 </head>
 <body>
 
@@ -387,10 +391,10 @@ $zonas = [
         <div class="marcas-grid">
             <?php
             $logos_marcas = [
-                'Hikvision'        => 'assets/logo-marca-hikvision.png',
-                'Dahua Technology' => 'assets/logo-marca-dahua.png',
-                'Midea'            => 'assets/logo-marca-midea.png',
-                'Clark Air Conditioning' => 'assets/logo-marca-clark.png',
+                'Hikvision'        => 'assets/hikvisions.png',
+                'Dahua Technology' => 'assets/alhua.png',
+                'Midea'            => 'assets/midea.png',
+                'Clark Air Conditioning' => 'assets/clark.png',
             ];
             foreach ($marcas as $m):
                 $logo_src = $logos_marcas[$m['nombre']] ?? null;
