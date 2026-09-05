@@ -21,14 +21,14 @@ $productos_principales = [
         'desc' => 'Protegemos tu hogar, local o empresa con cámaras, alarmas y cercos eléctricos instalados por nuestros especialistas.',
     ],
     [
-        'icono' => '🛠️',
-        'nombre' => 'Servicios Integrales',
-        'desc' => 'Un solo proveedor para todas tus necesidades. Coordinamos todo para que tú no tengas que preocuparte de nada.',
-    ],
-    [
         'icono' => '❄️',
         'nombre' => 'Climatización',
         'desc' => 'Instalamos tu aire acondicionado de forma profesional, con la marca y el equipo que mejor se adapta a tu espacio.',
+    ],
+    [
+        'icono' => '🛠️',
+        'nombre' => 'Servicios Integrales',
+        'desc' => 'Un solo proveedor para todas tus necesidades. Coordinamos todo para que tú no tengas que preocuparte de nada.',
     ],
     [
         'icono' => '🏠',
@@ -131,6 +131,18 @@ $nuevos_productos = [
             'Atención para proyectos industriales y residenciales',
         ],
     ],
+    [
+        'titulo' => 'Servicios Integrales',
+        'desc'   => 'Soluciones completas para tu hogar o negocio: electricidad, fontanería, instalaciones y soldadura en un solo servicio.',
+        'icono'  => '🛠️',
+        'imagen' => 'assets/nuevo-bg-instalacion.jpg',
+        'caracteristicas' => [
+            '⚡ Electricidad menor: enchufes, focos y lámparas, cambios automáticos, instalación de puntos y canalizaciones, dispositivos LED',
+            '🚿 Fontanería básica: cambio de grifería, extensión de cañerías, instalación de grifos, instalación de calentadores y mantenimiento',
+            '🔧 Instalación y armado: muebles prefabricados, bases para TV, cortinas, rollers y persianas, repisas y estanterías, muebles de cocina, cerraduras para puertas',
+            '🔩 Soldadura: estaño, plata, soldadura al arco eléctrica, reparaciones menores',
+        ],
+    ],
 ];
 
 $alianzas = [
@@ -226,7 +238,7 @@ $zonas = [
         <div class="shape shape--2"></div>
     </div>
     <div class="container hero__content">
-        <img src="assets/jr-services-logo.png" alt="JR Services SpA" class="hero__logo">
+        <img src="assets/jr-services-logo-nav.png" alt="JR Services SpA" class="hero__logo">
         <p class="hero__eyebrow">Tu proveedor confiable</p>
         <h1 class="hero__title">
             Soluciones<br>
@@ -430,7 +442,7 @@ $zonas = [
                     </span>
                     <div>
                         <a href="tel:<?= preg_replace('/\s+/', '', $empresa['telefono1']) ?>"><?= htmlspecialchars($empresa['telefono1']) ?></a>
-                        
+                        <a href="tel:<?= preg_replace('/\s+/', '', $empresa['telefono2']) ?>"><?= htmlspecialchars($empresa['telefono2']) ?></a>
                     </div>
                 </li>
                 <li>
@@ -449,7 +461,7 @@ $zonas = [
                     <span class="contacto-list__icon" aria-hidden="true">
                         <img src="assets/icon-instagram.svg" alt="Instagram">
                     </span>
-                    <span><a href="https://www.instagram.com/jrservices.ven/">Jrservices.ven</a></span>
+                    <span><a href="https://www.instagram.com/jrservices.ven/">jrservices.spa</a></span>
                 </li>
                 <li>
                     <span class="contacto-list__icon" aria-hidden="true">
