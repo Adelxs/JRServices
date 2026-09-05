@@ -265,12 +265,12 @@ $zonas = [
         <h2 class="section-title">Visión <span>&</span> Misión</h2>
         <div class="vm-grid">
             <div class="vm-card">
-                <div class="vm-card__icon" aria-hidden="true">👁️</div>
+                <!--<div class="vm-card__icon" aria-hidden="true">👁️</div>-->
                 <h3>Visión</h3>
                 <p><?= htmlspecialchars($vision) ?></p>
             </div>
             <div class="vm-card vm-card--accent">
-                <div class="vm-card__icon" aria-hidden="true">🎯</div>
+                <!--<div class="vm-card__icon" aria-hidden="true">🎯</div>-->
                 <h3>Misión</h3>
                 <p><?= htmlspecialchars($mision) ?></p>
             </div>
@@ -421,7 +421,7 @@ $zonas = [
         <div class="zonas-grid">
             <?php foreach ($zonas as $z): ?>
             <div class="zona-card <?= $z['principal'] ? 'zona-card--principal' : '' ?>">
-                <div class="zona-card__pin" aria-hidden="true">📍</div>
+                <img class="zona-card__pin" src="assets/icon-googlemaps.svg" alt="Google Maps">
                 <h3><?= htmlspecialchars($z['nombre']) ?></h3>
                 <p><?= htmlspecialchars($z['desc']) ?></p>
                 <?php if ($z['principal']): ?>
