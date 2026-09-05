@@ -137,10 +137,10 @@ $nuevos_productos = [
         'icono'  => '🛠️',
         'imagen' => 'assets/ELECTRICIDAD.jpg',
         'caracteristicas' => [
-            '⚡ Electricidad menor: enchufes, focos y lámparas, cambios automáticos, instalación de puntos y canalizaciones, dispositivos LED',
-            '🚿 Fontanería básica: cambio de grifería, extensión de cañerías, instalación de grifos, instalación de calentadores y mantenimiento',
-            '🔧 Instalación y armado: muebles prefabricados, bases para TV, cortinas, rollers y persianas, repisas y estanterías, muebles de cocina, cerraduras para puertas',
-            '🔩 Soldadura: estaño, plata, soldadura al arco eléctrica, reparaciones menores',
+            'Electricidad menor: enchufes, focos y lámparas, cambios automáticos, instalación de puntos y canalizaciones, dispositivos LED',
+            'Fontanería básica: cambio de grifería, extensión de cañerías, instalación de grifos, instalación de calentadores y mantenimiento',
+            'Instalación y armado: muebles prefabricados, bases para TV, cortinas, rollers y persianas, repisas y estanterías, muebles de cocina, cerraduras para puertas',
+            'Soldadura: estaño, plata, soldadura al arco eléctrica, reparaciones menores',
         ],
     ],
 ];
