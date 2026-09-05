@@ -84,7 +84,7 @@ $nuevos_productos = [
         ],
     ],
     [
-        'titulo' => 'Instalación de Equipos',
+        'titulo' => 'Climatización',
         'desc'   => 'Instalamos equipos electrónicos y eléctricos, montaje de equipamiento tecnológico.',
         'icono'  => '⚙️',
         'imagen' => 'assets/nuevo-bg-instalacion.jpg',
@@ -95,7 +95,7 @@ $nuevos_productos = [
             'Para hogares, oficinas y locales comerciales',
         ],
     ],
-    [
+    /*[
         'titulo' => 'Remodelación de Interiores',
         'desc'   => 'Instalación de láminas acrílicas, pintura y renovaciones menores, yeso, masilla, instalación de mobiliario.',
         'icono'  => '🪟',
@@ -130,7 +130,7 @@ $nuevos_productos = [
             'Trabajos a medida según especificación del cliente',
             'Atención para proyectos industriales y residenciales',
         ],
-    ],
+    ],*/
     [
         'titulo' => 'Servicios Integrales',
         'desc'   => 'Soluciones completas para tu hogar o negocio: electricidad, fontanería, instalaciones y soldadura en un solo servicio.',
@@ -248,7 +248,7 @@ $zonas = [
             Soluciones<br>
             <span class="hero__accent">Integrales</span>
         </h1>
-        <p class="hero__sub">Seguridad, climatización, domótica, redes y mucho más — todo en un solo proveedor.</p>
+        <!--<p class="hero__sub">Seguridad, climatización, domótica, redes y mucho más — todo en un solo proveedor.</p>-->
         <div class="hero__ctas">
             <a href="#contacto" class="btn btn--red">Cotizar ahora</a>
             <a href="#productos" class="btn btn--outline">Ver servicios</a>
