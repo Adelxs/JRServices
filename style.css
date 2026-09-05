@@ -612,11 +612,11 @@ body.modal-open { overflow: hidden; }
 }
 
 /* ── ALIANZAS ── */
-.alianzas-section { background: var(--color-negro); }
+.alianzas-section { background: var(--color-negro);}
 .alianzas-section .section-title { color: var(--color-blanco); }
 .alianzas-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 .alianza-card {

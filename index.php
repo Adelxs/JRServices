@@ -147,7 +147,7 @@ $nuevos_productos = [
 
 $alianzas = [
     [
-        'titulo' => 'Electrónica',
+        'titulo' => 'Electricidad industrial',
         'desc'   => 'Soluciones electrónicas, reparación de tarjetas y reemplazo de componentes con soporte técnico especializado.',
         'icono'  => '🔌',
     ],
@@ -161,11 +161,11 @@ $alianzas = [
         'desc'   => 'Venta de uniformes, serigrafía, impresión gráfica, plóter de corte entre otros servicios relacionados.',
         'icono'  => '👕',
     ],
-    [
+   /* [
         'titulo' => 'Metalúrgica y Montajes',
         'desc'   => 'Soldaduras profesionales en bronce, aluminio, cobre, plata, acero inoxidable. Montajes de equipamiento eléctrico y estructuras metálicas.',
         'icono'  => '🏗️',
-    ],
+    ],*/
 ];
 
 $marcas = [
@@ -323,7 +323,7 @@ $zonas = [
 <!-- ===== NUEVOS PRODUCTOS ===== -->
 <section class="section nuevos-section" id="nuevos">
     <div class="container">
-        <h2 class="section-title">Nuestros <span>Nuevos Servicios</span></h2>
+        <h2 class="section-title">Nuestros <span>Servicios</span></h2>
         <div class="nuevos-grid">
             <?php foreach ($nuevos_productos as $np): ?>
             <div class="nuevo-card"
