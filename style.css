@@ -928,7 +928,6 @@ body.modal-open { overflow: hidden; }
         flex-direction: column;
         gap: 0;
         padding: 16px 0;
-        border-bottom: 2px solid var(--color-rojo);
         transform: translateY(-120%);
         transition: transform var(--transition);
         z-index: 99;
