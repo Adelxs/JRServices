@@ -42,7 +42,7 @@ $productos_principales = [
     ],
     [
         'icono' => '🌐',
-        'nombre' => 'Redes LAN',
+        'nombre' => 'Networking',
         'desc' => 'Diseñamos e instalamos tu red cableada o inalámbrica para que tengas conectividad estable en todo tu espacio.',
     ],
 ];
@@ -132,7 +132,7 @@ $nuevos_productos = [
         ],
     ],*/
     [
-        'titulo' => 'Servicios Integrales',
+        'titulo' => 'Servicios Handyman',
         'desc'   => 'Soluciones completas para tu hogar o negocio: electricidad, fontanería, instalaciones y soldadura en un solo servicio.',
         'icono'  => '🛠️',
         'imagen' => 'assets/ELECTRICIDAD.jpg',
@@ -358,7 +358,7 @@ $zonas = [
             <h2 class="integrales-brand__title">Servicios <span>Integrales</span></h2>
         </div>
         <p class="integrales-text__desc">
-            Un producto creado pensando en nuestros clientes. Nos permite brindar soluciones en áreas distintas a nuestros productos principales. Hemos creado alianzas comerciales con emprendedores especialistas en distintas materias, lo que nos permite ofrecer una solución rápida y confiable con precio justo y competitivo — bajo nuestra supervisión, garantizando la calidad. <strong>Todo en un mismo proveedor.</strong>
+            Un servicio creado pensando en nuestros clientes. Nos permite brindar soluciones en áreas distintas a nuestros productos principales. Hemos creado alianzas comerciales con emprendedores especialistas en distintas materias, lo que nos permite ofrecer una solución rápida y confiable con precio justo y competitivo — bajo nuestra supervisión, garantizando la calidad. <strong>Todo en un mismo proveedor.</strong>
         </p>
         <div class="integrales-visual" aria-hidden="true">
             <div class="integrales-badge">1 proveedor</div>
@@ -446,7 +446,7 @@ $zonas = [
                     </span>
                     <div>
                         <a href="tel:<?= preg_replace('/\s+/', '', $empresa['telefono1']) ?>"><?= htmlspecialchars($empresa['telefono1']) ?></a>
-                        <a href="tel:<?= preg_replace('/\s+/', '', $empresa['telefono2']) ?>"><?= htmlspecialchars($empresa['telefono2']) ?></a>
+                        <!--<a href="tel:<?= preg_replace('/\s+/', '', $empresa['telefono2']) ?>"><?= htmlspecialchars($empresa['telefono2']) ?></a>-->
                     </div>
                 </li>
                 <li>
@@ -465,13 +465,19 @@ $zonas = [
                     <span class="contacto-list__icon" aria-hidden="true">
                         <img src="assets/icon-instagram.svg" alt="Instagram">
                     </span>
-                    <span><a href="https://www.instagram.com/jrservices.ven/">jrservices.spa</a></span>
+                    <span><a href="https://www.instagram.com/jrservices.ven/">jrservices.ven</a></span>
                 </li>
                 <li>
                     <span class="contacto-list__icon" aria-hidden="true">
                         <img src="assets/icon-googlemaps.svg" alt="Google Maps">
                     </span>
                     <span><?= htmlspecialchars($empresa['direccion']) ?></span>
+                </li>
+                <li>
+                    <span class="contacto-list__icon" aria-hidden="true">
+                        <img src="assets/tiktok.png" alt="Instagram">
+                    </span>
+                    <span><a href="https://www.tiktok.com/@jr_services.ve?is_from_webapp=1&sender_device=pc">@jr_services.ve</a></span>
                 </li>
             </ul>
         </div>
